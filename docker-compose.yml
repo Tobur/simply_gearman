@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    gearmand:
+        build:
+            context: docker/1.1.17
+        volumes:
+            - /var/www/turbo:/var/www/turbo
+    php:
+        build:
+            context: docker/php
+        volumes:
+            - /var/www/turbo:/var/www/turbo
+        volumes_from:
+            - gearmand
